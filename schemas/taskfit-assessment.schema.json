@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://govern-the-opportunity.org/schemas/taskfit-assessment.schema.json",
+  "title": "AI TaskFit Assessment",
+  "description": "Machine-readable record for Govern the Opportunity / AI Opportunity Governance Framework — Layer 1 of AI Governance / AI TaskFit 5D Method v0.1 Public Draft.",
+  "type": "object",
+  "required": [
+    "assessmentId",
+    "task",
+    "opportunity",
+    "initialRisk",
+    "governanceRoute",
+    "accountability"
+  ],
+  "properties": {
+    "assessmentId": { "type": "string", "minLength": 1 },
+    "frameworkVersion": { "const": "0.1" },
+    "task": {
+      "type": "object",
+      "required": ["name", "owner", "inputs", "output", "affectedParties"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "owner": { "type": "string", "minLength": 1 },
+        "inputs": { "type": "array", "items": { "type": "string" } },
+        "output": { "type": "string", "minLength": 1 },
+        "affectedParties": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "opportunity": {
+      "type": "object",
+      "required": ["aiFit", "businessValue", "readiness", "score", "band"],
+      "properties": {
+        "aiFit": { "$ref": "#/$defs/score" },
+        "businessValue": { "$ref": "#/$defs/score" },
+        "readiness": { "$ref": "#/$defs/score" },
+        "score": { "$ref": "#/$defs/score" },
+        "band": { "enum": ["Low", "Medium", "High"] }
+      }
+    },
+    "initialRisk": {
+      "type": "object",
+      "required": ["domains", "highestMaterialScore", "band"],
+      "properties": {
+        "domains": {
+          "type": "object",
+          "additionalProperties": { "$ref": "#/$defs/integerScore" }
+        },
+        "highestMaterialScore": { "$ref": "#/$defs/integerScore" },
+        "band": { "enum": ["Low", "Medium", "High"] },
+        "mandatoryEscalation": { "type": "boolean" }
+      }
+    },
+    "governanceRoute": {
+      "type": "object",
+      "required": ["usageMode", "gateDecision"],
+      "properties": {
+        "usageMode": { "enum": ["Automate", "Assist", "Advise", "Avoid / Defer"] },
+        "gateDecision": {
+          "enum": [
+            "Proceed",
+            "Proceed with Conditions",
+            "Extended Assessment Required",
+            "Defer",
+            "Reject"
+          ]
+        },
+        "controls": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "accountability": {
+      "type": "object",
+      "required": ["businessOwner", "governanceReviewer"],
+      "properties": {
+        "businessOwner": { "type": "string", "minLength": 1 },
+        "governanceReviewer": { "type": "string", "minLength": 1 },
+        "reviewDate": { "type": "string", "format": "date" }
+      }
+    },
+    "pilotDecision": {
+      "enum": ["Approve", "Approve with Controls", "Repeat Pilot", "Defer", "Reject", null]
+    }
+  },
+  "$defs": {
+    "score": { "type": "number", "minimum": 1, "maximum": 5 },
+    "integerScore": { "type": "integer", "minimum": 1, "maximum": 5 }
+  },
+  "additionalProperties": true
+}
