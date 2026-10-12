@@ -161,14 +161,13 @@ They must not be treated as regulatory approval, certification, or evidence of c
 
 - `framework/ai-opportunity-governance-en.md` — English framework specification
 - `framework/ai-opportunity-governance-ar.md` — Arabic framework specification
-- `toolkit/AI-TaskFit-Assessment-v0.1.xlsx` — current assessment workbook
+- `toolkit/AI-TaskFit-Assessment-v0.2.xlsx` — assessment workbook operationalizing the AI TaskFit 5D v0.2 governance method
 - `examples/candidate-screening.md` — worked high-impact example
 - `CHANGELOG.md` — version history
 - `CONTRIBUTING.md` — contribution process
 - `GOVERNANCE.md` — project governance
 - `NOTICE.md` — attribution and licensing notice
 
-> **Note:** The current assessment workbook remains at v0.1 and will be updated separately to operationalize the new v0.2 decision fields.
 
 ---
 
