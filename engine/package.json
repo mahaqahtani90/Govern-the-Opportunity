@@ -1,0 +1,14 @@
+{
+  "name": "ai-governance-engine-v0.3",
+  "version": "0.3.0-draft",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "example": "tsx src/example.ts",
+    "test:cases": "tsx src/test-cases.ts"
+  },
+  "devDependencies": {
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0"
+  }
+}
