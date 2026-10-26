@@ -5,7 +5,10 @@
   "scripts": {
     "build": "tsc",
     "example": "tsx src/example.ts",
-    "test:cases": "tsx src/test-cases.ts"
+    "test:cases": "tsx src/test-cases.ts",
+    "test": "node --import tsx src/test-cases.ts && node --import tsx src/clause5-tests.ts",
+    "test:clause5": "node --import tsx src/clause5-tests.ts",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "tsx": "^4.20.0",

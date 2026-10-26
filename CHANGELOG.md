@@ -4,6 +4,18 @@ All notable changes to **Govern the Opportunity** and the **AI TaskFit 5D Method
 
 ---
 
+## [Unreleased] — V4 development increment 1: Clause 5 authority
+
+- Extend the existing authority evaluator with optional governance context and
+  trusted organization-defined decision rights; preserve legacy calls.
+- Distinguish responsibility from authority to accept residual risk.
+- Enforce non-overridable boundaries, required controls/evidence, appetite,
+  authority checks, and explicit escalation using existing decision states.
+- Return a structured audit snapshot with decision context and policy provenance.
+- Add Clause 5 tests and assertions for legacy scenarios.
+- Record interpretation and evidence in `V4_ISO_IMPROVEMENT_LOG.md`.
+- No Clause 6 work, release tag, or certification claim.
+
 ## [v0.2] — Context, Authority & Accountability
 
 ### Added

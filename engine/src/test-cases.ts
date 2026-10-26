@@ -47,5 +47,20 @@ const cases: Record<string, AuthorityAssessment> = {
 
 for (const [name, test] of Object.entries(cases)) {
   console.log(`\n=== ${name.toUpperCase()} ===`);
-  console.log(evaluateAuthority(test));
+  const result = evaluateAuthority(test);
+  if (result.decision !== name.toUpperCase() || result.audit !== undefined) {
+    throw new Error(`Legacy regression: ${name}`);
+  }
+  console.log(result);
 }
+
+const nonAgent = evaluateAuthority({ ...base, agentic: false });
+if (nonAgent.decision !== "N/A") throw new Error("Non-agent regression");
+for (const sample of [...Object.values(cases), { ...base, agentic: false }]) {
+  const unchanged = evaluateAuthority(sample);
+  const changed = evaluateAuthority({ ...sample, materialChange: { detected: true, changedAreas: ["tool"] } });
+  if (changed.decision !== unchanged.decision || !changed.reassessmentRequired) {
+    throw new Error("Material-change regression");
+  }
+}
+console.log("Legacy regression assertions: 10 passed");
